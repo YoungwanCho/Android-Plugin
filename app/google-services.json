@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "543869932402",
+    "project_id": "plugin-android"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543869932402:android:d28cfaeeff4931e4",
+        "android_client_info": {
+          "package_name": "com.unity.androidmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543869932402-5j92j5sp9c0nhjab47ek3m17u4e8s4l2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoghQVq3ykIWaDsSLnzYWHcp7EkM_zPkw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
