@@ -32,7 +32,8 @@ public class JavaPlug extends AppCompatActivity {
         }
         else if(type == "Naver")
         {
-
+            loginIntent = new Intent(this, NaverLogin.class);
+            startActivity(loginIntent);
         }
     }
 }
