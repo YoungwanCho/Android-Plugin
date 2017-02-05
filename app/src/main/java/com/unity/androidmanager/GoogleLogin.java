@@ -105,6 +105,7 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
             GoogleSignInAccount acct = result.getSignInAccount();
 //            mStatusTextView.setText(acct.getDisplayName());
 //            updateUI(true);
+            signIn();
         } else {
             // Signed out, show unauthenticated UI.
 //            updateUI(false);

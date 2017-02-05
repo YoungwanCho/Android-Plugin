@@ -15,12 +15,12 @@ public class JavaPlug extends AppCompatActivity {
         setContentView(R.layout.activity_java_plug);
     }
 
-    public void AndroidCall()
+    public void CallAndroid()
     {
 
     }
 
-    public void LoginCall(String type)
+    public void CallAndroid(String type)
     {
         Intent loginIntent;
 
