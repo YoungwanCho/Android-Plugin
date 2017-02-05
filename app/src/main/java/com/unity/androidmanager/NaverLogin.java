@@ -29,7 +29,6 @@ public class NaverLogin extends Activity {
 
     private static OAuthLogin mOAuthLoginInstance;
     private static Context mContext;
-    private static OAuthLogin mOAuthLoginInstance;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,11 +73,11 @@ public class NaverLogin extends Activity {
                 String refreshToken = mOAuthLoginInstance.getRefreshToken(mContext);
                 long expiresAt = mOAuthLoginInstance.getExpiresAt(mContext);
                 String tokenType = mOAuthLoginInstance.getTokenType(mContext);
-                mOauthAT.setText(accessToken);
-                mOauthRT.setText(refreshToken);
-                mOauthExpires.setText(String.valueOf(expiresAt));
-                mOauthTokenType.setText(tokenType);
-                mOAuthState.setText(mOAuthLoginInstance.getState(mContext).toString());
+//                mOauthAT.setText(accessToken);
+//                mOauthRT.setText(refreshToken);
+//                mOauthExpires.setText(String.valueOf(expiresAt));
+//                mOauthTokenType.setText(tokenType);
+//                mOAuthState.setText(mOAuthLoginInstance.getState(mContext).toString());
             } else {
                 String errorCode = mOAuthLoginInstance.getLastErrorCode(mContext).getCode();
                 String errorDesc = mOAuthLoginInstance.getLastErrorDesc(mContext);
@@ -102,14 +101,14 @@ public class NaverLogin extends Activity {
             return null;
         }
         protected void onPostExecute(Void v) {
-            updateView();
+//            updateView();
         }
     }
 
     private class RequestApiTask extends AsyncTask<Void, Void, String> {
         @Override
         protected void onPreExecute() {
-            mApiResultText.setText((String) "");
+//            mApiResultText.setText((String) "");
         }
         @Override
         protected String doInBackground(Void... params) {
@@ -118,7 +117,7 @@ public class NaverLogin extends Activity {
             return mOAuthLoginInstance.requestApi(mContext, at, url);
         }
         protected void onPostExecute(String content) {
-            mApiResultText.setText((String) content);
+//            mApiResultText.setText((String) content);
         }
     }
 
@@ -128,7 +127,7 @@ public class NaverLogin extends Activity {
             return mOAuthLoginInstance.refreshAccessToken(mContext);
         }
         protected void onPostExecute(String res) {
-            updateView();
+//            updateView();
         }
     }
 }
