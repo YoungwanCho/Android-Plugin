@@ -27,7 +27,7 @@ import com.google.android.gms.common.api.Status;
  * Created by cho on 2017-02-03-0003.
  */
 
-public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, Runnable {
     private static final String TAG = "GoogleLogin";
     private static final int RC_SIGN_IN = 9001;
 
@@ -35,6 +35,7 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("#####", "GoogleLogin::onCreate()");
         super.onCreate(savedInstanceState);
 
         // [START configure_signin]
@@ -60,6 +61,7 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
 
     @Override
     public void onStart() {
+        Log.d("#####", "GoogleLogin::onStart()");
         super.onStart();
 
         OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
@@ -87,12 +89,16 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
     // [START onActivityResult]
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("#####", "GoogleLogin::onActivityResult()");
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
+
+            Thread t = new Thread(this);
+            t.start();
         }
     }
     // [END onActivityResult]
@@ -105,7 +111,6 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
             GoogleSignInAccount acct = result.getSignInAccount();
 //            mStatusTextView.setText(acct.getDisplayName());
 //            updateUI(true);
-            signIn();
         } else {
             // Signed out, show unauthenticated UI.
 //            updateUI(false);
@@ -115,6 +120,7 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
 
     // [START signIn]
     private void signIn() {
+        Log.d(TAG, "signIn()");
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -153,5 +159,11 @@ public class GoogleLogin extends AppCompatActivity implements GoogleApiClient.On
         // An unresolvable error has occurred and Google APIs (including Sign-In) will not
         // be available.
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
+    }
+
+    @Override
+    public void run() {
+        Log.d(TAG, "signIn()");
+        signIn();
     }
 }
